@@ -1,0 +1,103 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  // MyApp({super.key});
+  double contador = 10;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Mi app', // solo para android
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          appBar: AppBar(
+            // centerTitle: false,
+            title: const Align(
+              alignment: Alignment.centerRight,
+              child: Text('Aplicación Móvil en Flutter'),
+            ),
+          ),
+          body: Center(
+            // color: Colors.blue,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Tarea 2: Andrea Carranza ',
+                  style: TextStyle(fontSize: 30.0, color: Colors.lightBlue),
+                ),
+                Text(
+                  '$contador',
+                  style: TextStyle(fontSize: 28.0, color: Colors.purple[300]),
+                ),
+              ],
+            ),
+          ),
+          floatingActionButton: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              FloatingActionButton(
+                backgroundColor: Color(0xFF81D4FA),
+                child: const Icon(Icons.remove_circle_outline),
+                onPressed: () {
+                  contador = contador - 2;
+
+                  //redibuja todos los widgets
+                  //que sufrieron cambios
+                  setState(() {});
+                },
+              ),
+              const SizedBox(width: 30),
+              FloatingActionButton(
+                backgroundColor: Color(0xFF4FC3F7),
+                child: const Icon(Icons.add_circle_outline_rounded),
+                onPressed: () {
+                  contador = contador + 2;
+
+                  //redibuja todos los widgets
+                  //que sufrieron cambios
+                  setState(() {});
+                },
+              ),
+              const SizedBox(width: 30),
+              FloatingActionButton(
+                backgroundColor: Color(0xFF29B6F6),
+                child: const Icon(Icons.dnd_forwardslash_sharp),
+                onPressed: () {
+                  contador = contador / 2;
+
+                  //redibuja todos los widgets
+                  //que sufrieron cambios
+                  setState(() {});
+                },
+              ),
+              const SizedBox(width: 30),
+              FloatingActionButton(
+                backgroundColor: Color(0xFF03A9F4),
+                child: const Icon(Icons.highlight_off),
+                onPressed: () {
+                  contador = contador * 2;
+
+                  //redibuja todos los widgets
+                  //que sufrieron cambios
+                  setState(() {});
+                },
+              )
+            ],
+          )),
+    );
+  }
+}
